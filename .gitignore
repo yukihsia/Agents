@@ -1,0 +1,6 @@
+# Runtime / per-instance state (excluded by the import script, but defensive)
+.openclaw/
+memory/
+*.session
+*.jsonl
+.DS_Store
