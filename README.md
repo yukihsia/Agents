@@ -19,7 +19,7 @@ Curated AI agent collection for **OpenClaw** and **Claude Code**, fork-curated f
 │   ├── engineering-feishu-integration-developer/
 │   └── ... (94 total)
 │
-├── claude-code/       # Claude Code single-file format with YAML frontmatter
+├── agents/            # Claude Code single-file format with YAML frontmatter
 │   ├── finance-investment-researcher.md
 │   ├── engineering-feishu-integration-developer.md
 │   └── ... (94 total)
@@ -68,7 +68,7 @@ cp -r ~/projects/agents/openclaw/* ~/.openclaw/agency-agents/
 ```bash
 # Single-file agents are loaded from ~/.claude/agents/
 mkdir -p ~/.claude/agents
-cp ~/projects/agents/claude-code/*.md ~/.claude/agents/
+cp ~/projects/agents/agents/*.md ~/.claude/agents/
 
 # Restart Claude Code or call /agents to confirm they're discovered.
 ```

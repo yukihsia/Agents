@@ -1,0 +1,5 @@
+{
+  "name": "pv-agents",
+  "version": "1.0.0",
+  "description": "Pilot Ventures 通用 agents（Claude Code 子 agent 集合）"
+}
