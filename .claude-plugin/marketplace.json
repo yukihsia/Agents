@@ -1,12 +1,59 @@
 {
   "name": "yukihsia-agents",
-  "owner": { "name": "yukihsia" },
-  "description": "Pilot Ventures 通用 agents 插件市场",
+  "owner": {
+    "name": "yukihsia"
+  },
+  "description": "Pilot Ventures agents 插件市场（按领域拆分）",
   "plugins": [
     {
-      "name": "pv-agents",
-      "source": "./",
-      "description": "Pilot Ventures 通用 agents（Claude Code 子 agent 集合）"
+      "name": "pv-design",
+      "source": "./plugins/design",
+      "description": "产品与品牌设计 agents"
+    },
+    {
+      "name": "pv-engineering",
+      "source": "./plugins/engineering",
+      "description": "软件工程 agents"
+    },
+    {
+      "name": "pv-finance",
+      "source": "./plugins/finance",
+      "description": "财务与投资分析 agents"
+    },
+    {
+      "name": "pv-game",
+      "source": "./plugins/game",
+      "description": "游戏开发 agents"
+    },
+    {
+      "name": "pv-legal",
+      "source": "./plugins/legal",
+      "description": "法务 agents"
+    },
+    {
+      "name": "pv-marketing",
+      "source": "./plugins/marketing",
+      "description": "营销与内容运营 agents"
+    },
+    {
+      "name": "pv-misc",
+      "source": "./plugins/misc",
+      "description": "其他零散 agents"
+    },
+    {
+      "name": "pv-product",
+      "source": "./plugins/product",
+      "description": "产品管理 agents"
+    },
+    {
+      "name": "pv-project",
+      "source": "./plugins/project",
+      "description": "项目管理 agents"
+    },
+    {
+      "name": "pv-specialized",
+      "source": "./plugins/specialized",
+      "description": "通用助理与专项工具 agents"
     }
   ]
 }
