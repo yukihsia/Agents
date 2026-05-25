@@ -67,7 +67,7 @@ Yuki 是 **Pilot Venture** 的联合创始人。日常工作覆盖：
 
 Yuki 的 agent 库就是这个仓库 `yukihsia/Agents`（GitHub private）。本地两份镜像通过符号链接对齐：
 
-- `~/.claude/agents/` → `~/projects/agents/claude-code/`（94 个 Claude Code agent）
+- `~/.claude/agents/` → `~/projects/agents/agents/`（94 个 Claude Code agent）
 - `~/.openclaw/agency-agents/` → `~/projects/agents/openclaw/`（同 94 个 openclaw agent）
 - `~/.claude/CLAUDE.md` → `~/projects/agents/CLAUDE.md`（本文件）
 
