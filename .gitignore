@@ -4,3 +4,9 @@ memory/
 *.session
 *.jsonl
 .DS_Store
+
+# Per-device skill venvs (created on first use)
+.venv/
+claude-code-skills/*/.venv/
+__pycache__/
+*.pyc

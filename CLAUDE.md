@@ -73,6 +73,15 @@ Yuki 的 agent 库就是这个仓库 `yukihsia/Agents`（GitHub private）。本
 
 任何 agent 或身份配置改动：`vim` → `git push` → 其他机器 `git pull` → 自动生效。
 
+### 通用 Skill 跨设备同步（claude-code-skills/）
+
+自定义 Claude Code skill 统一放 `~/projects/agents/claude-code-skills/<skill-name>/`（含 `SKILL.md` + `scripts/` 等），通过**逐个软链**进 `~/.claude/skills/`（该目录混有第三方/per-device skill，不能整目录软链）。
+
+- **新设备启用**：`git pull` 后跑 `bash ~/projects/agents/claude-code-skills/link-skills.sh`（把 repo 里每个 skill 软链进 `~/.claude/skills/`），重开 Claude Code 生效。
+- **依赖**：带 Python 脚本的 skill 各设备首跑时按其 SKILL.md 自建 `.venv`（已 git-ignore，不入库）。
+- **改/加 skill**：编辑 `claude-code-skills/` → `git push` → 其他机器 `git pull` + 重跑 link 脚本。
+- 已收录：`sensor-tower-data-adjust`（Sensor Tower 投资口径调整 + 首年横评，CN 系数写死脚本保团队一致）。
+
 ---
 
 Notes for the agent: 准备回答前问自己——"这个回答 Yuki 真会觉得有用吗？" 如果是泛泛而谈，**重写**。
