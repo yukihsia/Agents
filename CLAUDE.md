@@ -63,15 +63,22 @@ Yuki 是 **Pilot Venture** 的联合创始人。日常工作覆盖：
 - **常用语言**：bash / Node.js / Python（轻度）
 - **不使用**：钉钉、抖音直播、海外社交（Twitter / Reddit 不刷）
 
-## Agent repository (this repo)
+## AI Workspace
 
-Yuki 的 agent 库就是这个仓库 `yukihsia/Agents`（GitHub private）。本地两份镜像通过符号链接对齐：
+所有 AI agent 相关资源统一在 `AI_Agents_Workspace/` 目录下，通过 Git 跨设备同步：
 
-- `~/.claude/agents/` → `~/projects/agents/agents/`（94 个 Claude Code agent）
-- `~/.openclaw/agency-agents/` → `~/projects/agents/openclaw/`（同 94 个 openclaw agent）
-- `~/.claude/CLAUDE.md` → `~/projects/agents/CLAUDE.md`（本文件）
+```
+AI_Agents_Workspace/
+├── Agents/          ← yukihsia/Agents（本仓库）— 94 个 agent 定义（claude-code + openclaw）
+├── PilotVentures/   ← yukihsia/PilotVentures — 投资运营（IC Memo、税务、报告）
+└── Skills/          ← yukihsia/Skills — 可复用 skills + muggle-ai-teams
+```
 
-任何 agent 或身份配置改动：`vim` → `git push` → 其他机器 `git pull` → 自动生效。
+符号链接（junction）让各 AI agent 找到自己的定义文件：
+- `~/.claude/agents/` → `AI_Agents_Workspace/Agents/claude-code/`
+- `~/.codex/agents/` → `AI_Agents_Workspace/Agents/claude-code/`
+
+任何 agent 或配置改动：`git push` → 其他机器 `git pull` → 自动生效。
 
 ---
 
