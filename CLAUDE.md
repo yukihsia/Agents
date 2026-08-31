@@ -69,16 +69,16 @@ Yuki 是 **Pilot Venture** 的联合创始人。日常工作覆盖：
 
 ```
 AI_Agents_Workspace/
-├── Agents/          ← yukihsia/Agents（本仓库）— 94 个 agent 定义（claude-code + openclaw）
-├── PilotVentures/   ← yukihsia/PilotVentures — 投资运营（IC Memo、税务、报告）
-└── Skills/          ← yukihsia/Skills — 可复用 skills + muggle-ai-teams
+├── Agents/                  ← yukihsia/Agents（本仓库）— 94 个 agent，按领域拆成 10 个插件
+├── PilotVentures-workspace/ ← Pilot-Game-Ventures/PilotVentures-workspace — 投资运营（团队共享）
+└── Skills/                  ← yukihsia/Skills — 可复用 skills + muggle-ai-teams
 ```
 
-符号链接（junction）让各 AI agent 找到自己的定义文件：
-- `~/.claude/agents/` → `AI_Agents_Workspace/Agents/claude-code/`
-- `~/.codex/agents/` → `AI_Agents_Workspace/Agents/claude-code/`
+**agents 通过插件市场分发，不再走符号链接。** 本仓库即 marketplace（`.claude-plugin/marketplace.json`，
+市场名 `yukihsia-agents`），agent 定义位于 `plugins/<领域>/agents/`。在项目的 `.claude/settings.json`
+里用 `extraKnownMarketplaces` + `enabledPlugins` 声明，会话中用 `/plugin` 临时增减。
 
-任何 agent 或配置改动：`git push` → 其他机器 `git pull` → 自动生效。
+任何 agent 或配置改动：`git push` → 其他机器 `git pull`（marketplace 已开 `autoUpdate`）→ 自动生效。
 
 ---
 

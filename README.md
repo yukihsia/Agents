@@ -19,10 +19,18 @@ Curated AI agent collection for **OpenClaw** and **Claude Code**, fork-curated f
 │   ├── engineering-feishu-integration-developer/
 │   └── ... (94 total)
 │
-├── agents/            # Claude Code single-file format with YAML frontmatter
-│   ├── finance-investment-researcher.md
-│   ├── engineering-feishu-integration-developer.md
-│   └── ... (94 total)
+├── plugins/           # Claude Code plugin marketplace — 94 agents across 10 domains
+│   ├── finance/
+│   │   ├── .claude-plugin/plugin.json
+│   │   └── agents/finance-investment-researcher.md ...   (8)
+│   ├── engineering/   (26)   ├── misc/         (18)
+│   ├── design/        (8)    ├── marketing/    (8)
+│   ├── specialized/   (7)    ├── project/      (6)
+│   ├── game/          (5)    ├── product/      (5)
+│   └── legal/         (3)
+│
+├── .claude-plugin/
+│   └── marketplace.json   # marketplace name: yukihsia-agents
 │
 └── README.md
 ```
@@ -31,8 +39,8 @@ Curated AI agent collection for **OpenClaw** and **Claude Code**, fork-curated f
 
 | Category | Count | Examples |
 |---|---|---|
-| `engineering-*` | 28 | feishu-integration / ai-engineer / backend-architect / git-workflow / data-engineer |
-| `marketing-*` | 11 | daily-news-briefing / douyin / cross-border-ecommerce / xiaohongshu (operator + specialist) / zhihu |
+| `engineering-*` | 26 | feishu-integration / ai-engineer / backend-architect / git-workflow / data-engineer |
+| `marketing-*` | 8 | daily-news-briefing / douyin / cross-border-ecommerce / xiaohongshu (operator + specialist) / zhihu |
 | `design-*` | 8 | brand-guardian / ui-designer / ux-architect / ux-researcher |
 | `finance-*` | 8 | investment-researcher / financial-analyst / fpa-analyst / tax-strategist |
 | `testing-*` | 2 | tool-evaluator / workflow-optimizer |
@@ -65,13 +73,36 @@ cp -r ~/projects/agents/openclaw/* ~/.openclaw/agency-agents/
 
 ### For Claude Code
 
-```bash
-# Single-file agents are loaded from ~/.claude/agents/
-mkdir -p ~/.claude/agents
-cp ~/projects/agents/agents/*.md ~/.claude/agents/
+Agents are distributed as a **plugin marketplace** — no copying, no symlinks.
 
-# Restart Claude Code or call /agents to confirm they're discovered.
+```bash
+# In any Claude Code session:
+/plugin marketplace add yukihsia/Agents
+/plugin install pv-finance@yukihsia-agents      # repeat per domain you want
 ```
+
+Or declare it per project in `.claude/settings.json` so every session picks it up:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "yukihsia-agents": {
+      "source": { "source": "github", "repo": "yukihsia/Agents" },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "pv-finance@yukihsia-agents": true,
+    "pv-specialized@yukihsia-agents": true
+  }
+}
+```
+
+Plugin names: `pv-design` `pv-engineering` `pv-finance` `pv-game` `pv-legal` `pv-marketing`
+`pv-misc` `pv-product` `pv-project` `pv-specialized`.
+
+Keep `enabledPlugins` small — every enabled plugin costs session-startup context. Use `/plugin`
+to enable others on demand (run `/reload-plugins` if a newly enabled one doesn't show up).
 
 Note: Claude Code single-file agents use YAML frontmatter:
 ```yaml
